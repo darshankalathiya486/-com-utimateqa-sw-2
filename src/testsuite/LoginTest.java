@@ -21,7 +21,7 @@ import org.openqa.selenium.WebElement;
  *
  */
 
-public class LoginTest extends BaseTest {
+public class LoginTest extends BaseTest  {
 
     // Declare baseUrl
     String baseUrl = "https://courses.ultimateqa.com/";
@@ -53,7 +53,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     // Method name verifyTheErrorMessage
-    public void verifyTheErrorMessage(){
+    public void verifyTheErrorMessage() throws InterruptedException {
 
         // Find Sign in link and click sign in link
         WebElement signLink = driver.findElement(By.xpath("//li[@class = 'header__nav-item header__nav-sign-in'] "));
@@ -67,10 +67,12 @@ public class LoginTest extends BaseTest {
         WebElement passwordField = driver.findElement(By.id("user[password]"));
         passwordField.sendKeys("12344444");
 
+
         // Find Login button and click login button
         WebElement loginButton = driver.findElement(By.xpath("//button[@class= 'button button-primary g-recaptcha']"));
         loginButton.click();
 
+        Thread.sleep(5000);
         //Verify error message
         // expected text
         String expected = "Invalid email or password.";
